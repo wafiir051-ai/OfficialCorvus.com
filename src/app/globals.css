@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/*
+  CORVUS Design System
+  Editorial / premium clothing brand.
+  Fixed identity — intentionally NOT following prefers-color-scheme.
+*/
+
+:root {
+  /* Core palette */
+  --color-ink: #14140f;          /* near-black, primary text/bg */
+  --color-ink-soft: #2a2a22;
+  --color-off-white: #f5f3ee;     /* primary background */
+  --color-off-white-soft: #eae6db;
+  --color-stone: #c9c3b3;         /* borders, dividers, muted surfaces */
+  --color-stone-dark: #8f8873;
+  --color-olive: #4a4f31;         /* brand accent */
+  --color-olive-light: #6b7048;
+  --color-rust: #a8452f;          /* alert / sale accent */
+  --color-white: #ffffff;
+
+  /* Semantic */
+  --background: var(--color-off-white);
+  --foreground: var(--color-ink);
+  --surface: var(--color-white);
+  --border: var(--color-stone);
+  --accent: var(--color-olive);
+  --accent-foreground: var(--color-off-white);
+  --danger: var(--color-rust);
+
+  /* Typography */
+  --font-display: "Anton", "Helvetica Neue", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-logo: "Permanent Marker", cursive;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-off-white: var(--color-off-white);
+  --color-off-white-soft: var(--color-off-white-soft);
+  --color-stone: var(--color-stone);
+  --color-stone-dark: var(--color-stone-dark);
+  --color-olive: var(--color-olive);
+  --color-olive-light: var(--color-olive-light);
+  --color-rust: var(--color-rust);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-logo: var(--font-logo);
+}
+
+/* No dark-mode media query override — CORVUS keeps one fixed brand identity. */
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.tracking-editorial {
+  letter-spacing: 0.15em;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
