@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signUpWithPassword } from "@/lib/actions/customer-auth";
 
-export default function CustomerRegisterPage() {
+function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
@@ -135,5 +135,13 @@ export default function CustomerRegisterPage() {
         </form>
       </div>
     </main>
+  );
+}
+
+export default function CustomerRegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterForm />
+    </Suspense>
   );
 }
