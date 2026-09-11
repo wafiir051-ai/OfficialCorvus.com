@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
@@ -11,7 +11,7 @@ import {
 
 type Step = "identify" | "password";
 
-export default function CustomerLoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
@@ -187,5 +187,13 @@ export default function CustomerLoginPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function CustomerLoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }
